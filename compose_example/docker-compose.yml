@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  flask:
+    build:
+      context: .
+    image: flask_game:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - DEBUG=True
+  mongo:
+    image: mongo
+    volumes:
+      - /home/mongo_data:/data/db
